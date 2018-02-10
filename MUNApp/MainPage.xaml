@@ -8,6 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button x:Name="beginBtn" Content="Begin New Committee" HorizontalAlignment="Left" Margin="652,266,0,0" VerticalAlignment="Top"/>
+        <Button Content="Resume Existing Committee" HorizontalAlignment="Left" Margin="647,382,0,0" VerticalAlignment="Top"/>
+        <Button Content="Edit Committee List" HorizontalAlignment="Left" Margin="656,496,0,0" VerticalAlignment="Top" />
 
     </Grid>
 </Page>
