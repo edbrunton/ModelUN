@@ -23,6 +23,28 @@ namespace MUNApp
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    /*string path = @"c:\temp\MyTest.txt";
+        if (!File.Exists(path))
+        {
+            // Create a file to write to.
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                sw.WriteLine("Hello");
+                sw.WriteLine("And");
+                sw.WriteLine("Welcome");
+            }
+        }
+
+        // Open the file to read from.
+        using (StreamReader sr = File.OpenText(path))
+        {
+            string s = "";
+            while ((s = sr.ReadLine()) != null)
+            {
+                Console.WriteLine(s);
+            }
+        }
+*/
    public enum votes
     {
         majority, superMajority, no, noObjections
@@ -86,7 +108,7 @@ namespace MUNApp
                 this.second = true;
                 this.debatable = true;
                 this.voteType = votes.majority;
-                this.description = "This motion will close debate on a specified resolution and move the body into voting procedures.If the motion passes, the body will vote on the resolution then continue debating the topic area";" 
+                this.description = "This motion will close debate on a specified resolution and move the body into voting procedures.If the motion passes, the body will vote on the resolution then continue debating the topic area"; 
                 this.priority = 9;
                 this.ruleNumber = 7.9;
             }
@@ -281,8 +303,8 @@ namespace MUNApp
                 description = "This point should be used when a delegate believes that the body is proceeding contrary to the rules.";
                 ruleNumber = 8.1;
             }*/
-        }
-        protected class PointOfInformation : Point
+}
+protected class PointOfInformation : Point
         {
             public PointOfInformation(Country aCountry)
             {
@@ -338,6 +360,28 @@ namespace MUNApp
             {
 
             }
+            string path = @"c:\temp\MyTest.txt";
+            if (!File.Exists(path))
+            {
+                // Create a file to write to.
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    sw.WriteLine("Hello");
+                    sw.WriteLine("And");
+                    sw.WriteLine("Welcome");
+                }
+            }
+
+            // Open the file to read from.
+            using (StreamReader sr = File.OpenText(path))
+            {
+                string s = "";
+                while ((s = sr.ReadLine()) != null)
+                {
+                   // Console.WriteLine(s);
+                }
+            }
+
         }
 
         private async System.Threading.Tasks.Task BeginBtn_ClickAsync(object sender, RoutedEventArgs e)
