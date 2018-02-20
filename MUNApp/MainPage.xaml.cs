@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -45,30 +46,42 @@ namespace MUNApp
             }
         }
 */
+    static class mySharedData{
+        static CompleteCommittee myCommittee;
+        public static CompleteCommittee MyCommittee { get => myCommittee; set => myCommittee = value; }
+    }
    public enum votes
     {
         majority, superMajority, no, noObjections
     }
     public class CompleteCommittee
     {
-        List<People> peopleList;
-        List<CommitteeSession> committeeSession;
-        List<ModeratedCaucus> moderatedCaucus;
-        List<UnModeratedCaucus> unmodCacus;
-        List<LimitsOfDebate> limitsOfDebate;
-        List<AgendaItems> agendaItems;
-        protected class AgendaItems
+        private List<People> peopleList;
+        private List<CommitteeSession> committeeSession;
+        private List<ModeratedCaucus> moderatedCaucus;
+        private List<UnModeratedCaucus> unmodCacus;
+        private List<LimitsOfDebate> limitsOfDebate;
+        private List<AgendaItems> agendaItems;
+
+        public List<CommitteeSession> CommitteeSession1 { get => committeeSession; set => committeeSession = value; }
+        public List<ModeratedCaucus> ModeratedCaucus1 { get => moderatedCaucus; set => moderatedCaucus = value; }//todo: make all subclasses public
+        public List<UnModeratedCaucus> UnmodCacus { get => unmodCacus; set => unmodCacus = value; }
+        public List<LimitsOfDebate> LimitsOfDebate1 { get => limitsOfDebate; set => limitsOfDebate = value; }
+        public List<AgendaItems> AgendaItems1 { get => agendaItems; set => agendaItems = value; }
+        public List<People> PeopleList { get => peopleList; set => peopleList = value; }
+
+        public class AgendaItems
         {
             List<Resolution> resolutionsPassed;
             List<Resolution> resolutionsOnFloor;
             List<Resolution> draftResolutions;
             string description;
         }
-        protected class Resolution
+        public class Resolution
         {
 
         }
-        protected class ReorderAgendaItems : ProceduralMotion
+        public class ReorderAgendaItems : ProceduralMotion
         {
             List<int> order;
             public ReorderAgendaItems(Country motioningCountry)
@@ -83,7 +96,7 @@ namespace MUNApp
                 this.ruleNumber = 7.7;
             }
         }
-        protected class ClosureofDebateOnTopic : ProceduralMotion
+        public class ClosureofDebateOnTopic : ProceduralMotion
         {
             AgendaItems itemToClose;
             public ClosureofDebateOnTopic(Country motioningCountry)
@@ -98,7 +111,7 @@ namespace MUNApp
                 this.ruleNumber = 7.8;
             }
         }
-        protected class ClosureofDebateOnDraftResolution : ProceduralMotion
+        public class ClosureofDebateOnDraftResolution : ProceduralMotion
         {
             Resolution itemToClose;
             public ClosureofDebateOnDraftResolution(Country motioningCountry)
@@ -113,7 +126,7 @@ namespace MUNApp
                 this.ruleNumber = 7.9;
             }
         }
-        protected class AdjournmentofMeeting : ProceduralMotion
+        public class AdjournmentofMeeting : ProceduralMotion
         {
             public AdjournmentofMeeting(Country motioningCountry)
             {
@@ -127,19 +140,19 @@ namespace MUNApp
                 this.ruleNumber = 7.14;
             }
         }
-        protected class People
+        public class People
         {
             DateTime timeAdded;
         }
-        protected class CommitteeSession
+        public class CommitteeSession
         {
 
         }
-        protected class ModeratedCaucus
+        public class ModeratedCaucus
         {
 
         }
-        protected class ModeratedCaucusMotion : ProceduralMotion
+        public class ModeratedCaucusMotion : ProceduralMotion
         {
             ModeratedCaucus limitsRaised;
             public ModeratedCaucusMotion(Country motioningCountry)
@@ -154,11 +167,11 @@ namespace MUNApp
                 this.ruleNumber = 7.12;
             }
         }
-        protected class UnModeratedCaucus
+        public class UnModeratedCaucus
         {
 
         }
-        protected class UnModeratedCaucusMotion : ProceduralMotion
+        public class UnModeratedCaucusMotion : ProceduralMotion
         {
             UnModeratedCaucus limitsRaised;
             public UnModeratedCaucusMotion(Country motioningCountry)
@@ -173,7 +186,7 @@ namespace MUNApp
                 this.ruleNumber = 7.11;
             }
         }
-        protected class LimitsOfDebate
+        public class LimitsOfDebate
         {
             int pointsOfInquiry;
             double speakingTime;
@@ -197,7 +210,7 @@ namespace MUNApp
                 }
             }
         }
-        protected class LimitsOfDebateMotion: ProceduralMotion
+        public class LimitsOfDebateMotion: ProceduralMotion
         {
             LimitsOfDebate limitsRaised;
             public LimitsOfDebateMotion(Country motioningCountry)
@@ -212,11 +225,11 @@ namespace MUNApp
                 this.ruleNumber = 7.3;
              }
         }
-        protected class SupsensionoftheMeeting
+        public class SupsensionoftheMeeting
         {
 
         }
-        protected class SupsensionoftheMeetingMotion : ProceduralMotion
+        public class SupsensionoftheMeetingMotion : ProceduralMotion
         {
             SupsensionoftheMeeting supsension;
             public SupsensionoftheMeetingMotion(Country motioningCountry)
@@ -231,7 +244,7 @@ namespace MUNApp
                 this.ruleNumber = 7.4;
             }
         }
-        protected class SubmissionofProposal : Rule
+        public class SubmissionofProposal : Rule
         {
             public SubmissionofProposal(Country countrySubmitting)
             {
@@ -244,13 +257,13 @@ namespace MUNApp
                 this.ruleNumber = 9.2;
             }
         }
-        protected class Country
+        public class Country
         {
             string name;
             People person;
             public string Name { get => name; set => name = value; }
         }
-        protected class Rule
+        public class Rule
         {
             protected bool debatable;
             protected bool second;
@@ -274,7 +287,7 @@ namespace MUNApp
                 this.description = description;
             }
         }
-        protected class Point: Rule
+        public class Point: Rule
         {
 
             protected Country motioningCounty;
@@ -285,7 +298,7 @@ namespace MUNApp
                 second = false;
             }
         }
-        protected class PointOfOrder: Point
+        public class PointOfOrder: Point
         {
               public PointOfOrder(Country aCountry)
             {
@@ -303,8 +316,8 @@ namespace MUNApp
                 description = "This point should be used when a delegate believes that the body is proceeding contrary to the rules.";
                 ruleNumber = 8.1;
             }*/
-}
-protected class PointOfInformation : Point
+        }
+        public class PointOfInformation : Point
         {
             public PointOfInformation(Country aCountry)
             {
@@ -315,7 +328,7 @@ protected class PointOfInformation : Point
                 priority = 2;
             }
         }
-        protected class PointOfInquiry : Point
+        public class PointOfInquiry : Point
         {
             public PointOfInquiry(Country aCountry)
             {
@@ -326,7 +339,7 @@ protected class PointOfInformation : Point
                 priority = 3;
             }
         }
-        protected class DiplomaticCourtesy : Point
+        public class DiplomaticCourtesy : Point
         {
             public DiplomaticCourtesy(Country aCountry)
             {
@@ -337,14 +350,14 @@ protected class PointOfInformation : Point
                 priority = 4;
             }
         }
-        protected class ProceduralMotion: Rule
+        public class ProceduralMotion: Rule
         {
             protected Country motioningCounty;
             public ProceduralMotion()
             {
             }
         }
-        protected class Seat
+        public class Seat
         {
 
         }
@@ -352,35 +365,13 @@ protected class PointOfInformation : Point
     }
     public sealed partial class MainPage : Page
     {
-        CompleteCommittee CompleteCommittee;
         public MainPage()
         {
-            this.InitializeComponent();
-            if(!(Convert.ToString(ApplicationData.Current.RoamingSettings.Values["openTimes"]) == ""))
-            {
 
-            }
-            string path = @"c:\temp\MyTest.txt";
-            if (!File.Exists(path))
-            {
-                // Create a file to write to.
-                using (StreamWriter sw = File.CreateText(path))
-                {
-                    sw.WriteLine("Hello");
-                    sw.WriteLine("And");
-                    sw.WriteLine("Welcome");
-                }
-            }
-
-            // Open the file to read from.
-            using (StreamReader sr = File.OpenText(path))
-            {
-                string s = "";
-                while ((s = sr.ReadLine()) != null)
-                {
-                   // Console.WriteLine(s);
-                }
-            }
+            CompleteCommittee temp = mySharedData.MyCommittee;
+            CompleteCommittee temp2 = new CompleteCommittee();
+            
+            this.InitializeComponent();           
 
         }
 
@@ -392,8 +383,44 @@ protected class PointOfInformation : Point
            // dialog.Commands.Add(new UICommand(translate("Never"), new UICommandInvokedHandler(reviewOutCome)));
             dialog.DefaultCommandIndex = 0;
             dialog.CancelCommandIndex = 1;
+
+            /*  string path = @"MyTest.txt";
+              if (!File.Exists(path))
+              {
+                  // Create a file to write to.
+                  using (StreamWriter sw = File.CreateText(path))
+                  {
+                      sw.WriteLine("Hello");
+                      sw.WriteLine("And");
+                      sw.WriteLine("Welcome");
+                  }
+              }
+
+              //Open the file to read from.
+              using (StreamReader sr = File.OpenText(path))
+              {
+                  string s = "";
+                  while ((s = sr.ReadLine()) != null)
+                  {
+                      // Console.WriteLine(s);
+                  }
+              }*/
+
+       /*  string test = "Testing 1-2-3";
+
+            // convert string to stream
+            byte[] byteArray = Encoding.ASCII.GetBytes(test);
+            MemoryStream stream = new MemoryStream(byteArray);
+
+            // convert stream to string
+            StreamReader reader = new StreamReader(stream);
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(stream))
+            {
+                file.WriteLine("Hello world");
+            }*/
             await dialog.ShowAsync();
-        }
+                
+            }
         private void reviewOutCome(IUICommand command)
         {
             if(command.Label.CompareTo("Yes, Overwrite Old Data") == 0)
@@ -411,7 +438,7 @@ protected class PointOfInformation : Point
         }
         private void editBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(CommitteePage));
         }
     }
     
