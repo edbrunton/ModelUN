@@ -23,11 +23,21 @@
         </Grid.RowDefinitions>
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="Begin" x:Uid="begin" Content="Start Game!@" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="100" Click="Begin_Click" Background="#7FA416C3" />
-            <Button x:Name="Instructions" x:Uid="Instruct" Content="Instructions@" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="75" Click="Instructions_Click" Background="#33A416C3"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <RichEditBox  x:Name="inputBox" Grid.Row="0" FontSize="24" TextAlignment="Center" Grid.ColumnSpan="3" Grid.Column="0"/>
+            <Button Content="Update" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click"/>
+            <Button Content="Return Home" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click_1" />
+
         </Grid>
     </Grid>
 </Page>

@@ -98,6 +98,7 @@
     <Compile Include="CommitteePage.xaml.cs">
       <DependentUpon>CommitteePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CompleteCommittee.cs" />
     <Compile Include="EditPage.xaml.cs">
       <DependentUpon>EditPage.xaml</DependentUpon>
     </Compile>

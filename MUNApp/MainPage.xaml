@@ -8,9 +8,28 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="beginBtn" Content="Begin New Committee" HorizontalAlignment="Left" Margin="652,266,0,0" VerticalAlignment="Top" Click="beginBtn_Click"/>
-        <Button x:Name="resumeBtn" Content="Resume Existing Committee" HorizontalAlignment="Left" Margin="647,382,0,0" VerticalAlignment="Top" Click="resumeBtn_Click"/>
-        <Button x:Name="editBtn" Content="Edit Committee List" HorizontalAlignment="Left" Margin="656,496,0,0" VerticalAlignment="Top" Click="editBtn_Click" />
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="beginBtn" Content="Begin New Committee" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="beginBtn_Click" Grid.Row="0"/>
+            <Button x:Name="resumeBtn" Content="Resume Existing Committee" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="resumeBtn_Click" Grid.Row="2"/>
+            <Button x:Name="editBtn" Content="Edit Committee List" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="editBtn_Click" Grid.Row="4"/>
+        </Grid>
     </Grid>
 </Page>
