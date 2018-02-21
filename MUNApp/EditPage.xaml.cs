@@ -31,7 +31,7 @@ namespace MUNApp
            
             this.InitializeComponent();
             //    ItemCollection temp = mainGrid.IsItemsHost;
-            inputBox.Document.SetText(Windows.UI.Text.TextSetOptions.None, "Here is text");
+
             List<CompleteCommittee.Country> members = mySharedData.MyCommittee.CountryList;
             string completetext = delegateName + "," +  countryName + "," + highSchool;
             for(int i =0; i< members.Count; i ++)
@@ -39,7 +39,7 @@ namespace MUNApp
                 string title = members[i].Name + "," + members[i].Person.Name + "," + members[i].Person.School + "\n";
                 completetext += title;  
             }
-            inputBox.Document.GetText(Windows.UI.Text.TextGetOptions.AdjustCrlf, out completetext);
+            inputBox.Document.SetText(Windows.UI.Text.TextSetOptions.None, completetext);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

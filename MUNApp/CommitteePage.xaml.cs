@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using static MUNApp.CompleteCommittee;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -26,10 +27,115 @@ namespace MUNApp
         public CommitteePage()
         {
             this.InitializeComponent();
-        }
-        public CommitteePage(CompleteCommittee completeCommittee)
-        {
+            try
+            {
+                AgendaItems currentTopic = mySharedData.MyCommittee.AgendaItems1[0];
+                currentTopicBlock.Text = currentTopic.Description;
+
+            }
+            catch (Exception)
+            {
+                currentTopicBlock.Text = "Warning: no info loaded!";
+             //   throw;
+            }
             
+                string temp = PointOfOrder.GetInfo();
+            List<Button> list = new List<Button>();
+            button0.Content = (new TextBlock().Text = PointOfOrder.GetInfo());
+            button1.Content = PointOfInformation.GetInfo();
+            button2.Content = PointOfInquiry.GetInfo();
+            button3.Content = DiplomaticCourtesy.GetInfo();
+            button4.Content = LimitsOfDebateMotion.GetInfo();
+            button5.Content = SupsensionoftheMeetingMotion.GetInfo();
+            button6.Content = UnModeratedCaucusMotion.GetInfo();
+            button7.Content = ClosureofDebateOnTopic.GetInfo();
+            button8.Content = ClosureofDebateOnDraftResolution.GetInfo();
+            button9.Content = ModeratedCaucusMotion.GetInfo();
+            button10.Content = AdjournmentofMeeting.GetInfo();
+            button11.Content = ModeratedCaucusMotion.GetInfo();
+            button12.Content = SubmissionofProposal.GetInfo();
+
+
+        }
+
+        private void button0_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button11_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button12_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button13_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button14_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button15_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

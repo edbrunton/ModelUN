@@ -13,7 +13,7 @@ namespace MUNApp
         private List<UnModeratedCaucus> unmodCacus;
         private List<LimitsOfDebate> limitsOfDebate;
         private List<AgendaItems> agendaItems;
-
+        
         public CompleteCommittee(List<Country> countryList, List<CommitteeSession> committeeSession, List<ModeratedCaucus> moderatedCaucus, List<UnModeratedCaucus> unmodCacus, List<LimitsOfDebate> limitsOfDebate, List<AgendaItems> agendaItems)
         {
             this.countryList = countryList;
@@ -46,6 +46,8 @@ namespace MUNApp
             List<Resolution> resolutionsOnFloor;
             List<Resolution> draftResolutions;
             string description;
+
+            public string Description { get => description; set => description = value; }
         }
         public class Resolution
         {
@@ -65,6 +67,10 @@ namespace MUNApp
                 this.priority = 7;
                 this.ruleNumber = 7.7;
             }
+            public static string GetInfo()
+            {
+                return (new ReorderAgendaItems(new Country("fake"))).name;
+            }
         }
         public class ClosureofDebateOnTopic : ProceduralMotion
         {
@@ -79,6 +85,10 @@ namespace MUNApp
                 this.description = "This motion will close debate on the whole topic area and move the body into voting procedures on all resolutions and amendments on the floor. After voting, the body will then move into the next topic area as specified by the agenda.";
                 this.priority = 8;
                 this.ruleNumber = 7.8;
+            }
+            public static string GetInfo()
+            {
+                return (new ClosureofDebateOnTopic(new Country("fake"))).name;
             }
         }
         public class ClosureofDebateOnDraftResolution : ProceduralMotion
@@ -95,6 +105,10 @@ namespace MUNApp
                 this.priority = 9;
                 this.ruleNumber = 7.9;
             }
+            public static string GetInfo()
+            {
+                return (new ClosureofDebateOnDraftResolution(new Country("fake"))).name;
+            }
         }
         public class AdjournmentofMeeting : ProceduralMotion
         {
@@ -108,6 +122,10 @@ namespace MUNApp
                 this.description = "This motion will be accepted when all business of the committee has been completed and that the committee will not reconvene until the next annual session.";
                 this.priority = 13;
                 this.ruleNumber = 7.14;
+            }
+            public static string GetInfo()
+            {
+                return (new AdjournmentofMeeting(new Country("fake"))).name;
             }
         }
         public class People
@@ -150,6 +168,10 @@ namespace MUNApp
                 this.priority = 11;
                 this.ruleNumber = 7.12;
             }
+            public static string GetInfo()
+            {
+                return (new ModeratedCaucusMotion(new Country("fake"))).name;
+            }
         }
         public class UnModeratedCaucus
         {
@@ -158,6 +180,7 @@ namespace MUNApp
         public class UnModeratedCaucusMotion : ProceduralMotion
         {
             UnModeratedCaucus limitsRaised;
+         
             public UnModeratedCaucusMotion(Country motioningCountry)
             {
                 this.motioningCounty = motioningCountry;
@@ -169,6 +192,11 @@ namespace MUNApp
                 this.priority = 10;
                 this.ruleNumber = 7.11;
             }
+            public static string GetInfo()
+            {
+                return (new UnModeratedCaucusMotion(new Country("fake"))).name;
+            }
+
         }
         public class LimitsOfDebate
         {
@@ -208,14 +236,18 @@ namespace MUNApp
                 this.priority = 5;
                 this.ruleNumber = 7.3;
              }
+            public static string GetInfo()
+            {
+                return (new LimitsOfDebateMotion(new Country("fake"))).name;
+            }
         }
-        public class SupsensionoftheMeeting
+        public class SuspensionoftheMeeting
         {
 
         }
         public class SupsensionoftheMeetingMotion : ProceduralMotion
         {
-            SupsensionoftheMeeting supsension;
+            SuspensionoftheMeeting supsension;
             public SupsensionoftheMeetingMotion(Country motioningCountry)
             {
                 this.motioningCounty = motioningCountry;
@@ -226,6 +258,10 @@ namespace MUNApp
                 this.description = "This motion will suspend formal debate for a specified amount of time, usually to closing debate for the day or for lunch.";
                 this.priority = 6;
                 this.ruleNumber = 7.4;
+            }
+            public static string GetInfo()
+            {
+                return (new SupsensionoftheMeetingMotion(new Country("fake"))).name;
             }
         }
         public class SubmissionofProposal : Rule
@@ -239,6 +275,61 @@ namespace MUNApp
                 this.description = "This is not a motion, but rather the act of bringing your resolution to the dais staff. You will submit the resolution and it will be checked for formatting and content. Once checking is complete, the Chairperson will then inform the body that a delegate can motion for consideration of draft resolution (9.3).";
                 this.priority = 14;
                 this.ruleNumber = 9.2;
+            }
+            public static string GetInfo()
+            {
+                return (new SubmissionofProposal(new Country("fake"))).name;
+            }
+        }
+        public class ConsiderationofDraftResolution : Rule
+        {
+            public ConsiderationofDraftResolution(Country countrySubmitting)
+            {
+                this.name = "Consideration of Draft Resolution";
+                this.second = true;
+                this.debatable = false;
+                this.voteType = votes.majority;
+                this.description = "Following the draft resolution’s submission to the dais and after it has been distributed to the body, this motion allows the body to officially begin substantive debate on it. If the motion passes the sponsors of the resolution will be invited to explain the resolution to the body and take Points of Inquiry.";
+                this.priority = 15;
+                this.ruleNumber = 9.3;
+            }
+            public static string GetInfo()
+            {
+                return (new ConsiderationofDraftResolution(new Country("fake"))).name;
+            }
+        }
+        public class ConsiderationofUnfriendlyAmendment : Rule
+        {
+            public ConsiderationofUnfriendlyAmendment(Country countrySubmitting)
+            {
+                this.name = "Consideration of Unfriendly Amendments";
+                this.second = true;
+                this.debatable = false;
+                this.voteType = votes.majority;
+                this.description = "This motion will be entertained after the Chairperson approves the amendment via rule 9.2. The Chairperson will then present the amendment to the body, this must be completed before closure of debate is motioned for, Rule 7.9 or 7.10.";
+                this.priority = 16;
+                this.ruleNumber = 9.4;
+            }
+            public static string GetInfo()
+            {
+                return (new ConsiderationofUnfriendlyAmendment(new Country("fake"))).name;
+            }
+        }
+        public class ConsiderationofFriendlyAmendment : Rule
+        {
+            public ConsiderationofFriendlyAmendment(Country countrySubmitting)
+            {
+                this.name = "Friendly Amendments";
+                this.second = false;
+                this.debatable = false;
+                this.voteType = votes.no;
+                this.description = "A Friendly Amendment is automatically put into a resolution. To be considered friendly, it needs to have the approval of all the sponsors of the resolution.";
+                this.priority = 17;
+                this.ruleNumber = 9.5;
+            }
+            public static string GetInfo()
+            {
+                return (new ConsiderationofFriendlyAmendment(new Country("fake"))).name;
             }
         }
         public class Country
@@ -305,13 +396,10 @@ namespace MUNApp
                 ruleNumber = 8.1;
                 priority = 1;
             }
-          /*  public PointOfOrder()
+            public static string GetInfo()
             {
-                name = "Point of Order";
-                response = "On Order";
-                description = "This point should be used when a delegate believes that the body is proceeding contrary to the rules.";
-                ruleNumber = 8.1;
-            }*/
+                return (new PointOfOrder(new Country("fake"))).name;
+            }
         }
         public class PointOfInformation : Point
         {
@@ -322,6 +410,10 @@ namespace MUNApp
                 description = "This point should be used when a delegate is unsure of the correct proceedings, rules, or any other information the chair can provide.";
                 ruleNumber = 8.2;
                 priority = 2;
+            }
+            public static string GetInfo()
+            {
+                return (new PointOfInformation(new Country("fake"))).name;
             }
         }
         public class PointOfInquiry : Point
@@ -334,6 +426,10 @@ namespace MUNApp
                 ruleNumber = 8.3;
                 priority = 3;
             }
+            public static string GetInfo()
+            {
+                return (new PointOfInquiry(new Country("fake"))).name;
+            }
         }
         public class DiplomaticCourtesy : Point
         {
@@ -344,6 +440,10 @@ namespace MUNApp
                 description = "Delegates must exercise diplomatic courtesy to all other delegates and secretariat members at all times.";
                 ruleNumber = 7.1;
                 priority = 4;
+            }
+            public static string GetInfo()
+            {
+                return (new DiplomaticCourtesy(new Country("fake"))).name;
             }
         }
         public class ProceduralMotion: Rule
