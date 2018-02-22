@@ -47,14 +47,21 @@ namespace MUNApp
             button3.Content = DiplomaticCourtesy.GetInfo();
             button4.Content = LimitsOfDebateMotion.GetInfo();
             button5.Content = SupsensionoftheMeetingMotion.GetInfo();
-            button6.Content = UnModeratedCaucusMotion.GetInfo();
+            button6.Content = ReorderAgendaItems.GetInfo();
             button7.Content = ClosureofDebateOnTopic.GetInfo();
             button8.Content = ClosureofDebateOnDraftResolution.GetInfo();
-            button9.Content = ModeratedCaucusMotion.GetInfo();
-            button10.Content = AdjournmentofMeeting.GetInfo();
-            button11.Content = ModeratedCaucusMotion.GetInfo();
+            button9.Content = UnModeratedCaucusMotion.GetInfo();
+            button10.Content = ModeratedCaucusMotion.GetInfo();
+            button11.Content = AdjournmentofMeeting.GetInfo();
             button12.Content = SubmissionofProposal.GetInfo();
-
+            button13.Content = ConsiderationofDraftResolution.GetInfo();
+            button14.Content = ConsiderationofUnfriendlyAmendment.GetInfo();
+            button14.Content = ConsiderationofFriendlyAmendment.GetInfo();
+            button15.Content = AddanAgendaTopic.GetInfo();
+            button16.Content = "Go Back";
+            button17.Content = "Vote on Motions";
+            button18.Content = "View Available Amendments";
+            button19.Content = "View Available Resolutions";
 
         }
 
@@ -134,6 +141,26 @@ namespace MUNApp
         }
 
         private void button15_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button16_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button17_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button18_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void button19_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -332,14 +332,80 @@ namespace MUNApp
                 return (new ConsiderationofFriendlyAmendment(new Country("fake"))).name;
             }
         }
+        public class DivisionofTheQuestion : Rule
+        {
+            public DivisionofTheQuestion(Country countrySubmitting)
+            {
+                this.name = "Division of the Question";
+                this.second = true;
+                this.debatable = true;
+                this.voteType = votes.majority;
+                this.description = "This motion can be used after closure of debate and before the body has voted on the resolution. It divides the resolution so that selected clauses can be voted on separately.";
+                this.priority = 18;
+                this.ruleNumber = 9.6;
+            }
+            public static string GetInfo()
+            {
+                return (new DivisionofTheQuestion(new Country("fake"))).name;
+            }
+        }
+        public class AdoptionbyConsensus : Rule
+        {
+            public AdoptionbyConsensus(Country countrySubmitting)
+            {
+                this.name = "Adoption by Consensus";
+                this.second = false;
+                this.debatable = false;
+                this.voteType = votes.noObjections;
+                this.description = "If there are no objections to adopting a proposal by consensus, then the proposal passes by consensus. Standard voting will continue if there is one or more objections.";
+                this.priority = 19;
+                this.ruleNumber = 10.41;
+            }
+            public static string GetInfo()
+            {
+                return (new AdoptionbyConsensus(new Country("fake"))).name;
+            }
+        }
+        public class RollCallVoteMotion : Rule
+        {
+            public RollCallVoteMotion(Country countrySubmitting)
+            {
+                this.name = "Roll Call Vote";
+                this.second = false;
+                this.debatable = false;
+                this.voteType = votes.no;
+                this.description = "If this motion is made the Chairperson will call each country’s name. Possible responses are: Yes, Yes with Rights, No, No with Rights, Abstain, and Abstain from the Order. This motion is used if a delegate wishes to see how each delegate votes.";
+                this.priority = 20;
+                this.ruleNumber = 10.42;
+            }
+            public static string GetInfo()
+            {
+                return (new RollCallVoteMotion(new Country("fake"))).name;
+            }
+        }
+        public class AddanAgendaTopic : Rule
+        {
+            public AddanAgendaTopic(Country countrySubmitting)
+            {
+                this.name = "Add an Agenda Topic";
+                this.second = true;
+                this.debatable = true;
+                this.voteType = votes.majority;
+                this.description = "This motion adds an agenda topic to the working agenda and if passed places the topic at the bottom of the agenda list. This motion is usually used to add a topic linked to the crisis.";
+                this.priority = 21;
+                this.ruleNumber = 11.5;
+            }
+            public static string GetInfo()
+            {
+                return (new AddanAgendaTopic(new Country("fake"))).name;
+            }
+        }
         public class Country
         {
             
             string name;
             People person;
             DateTime dateTime;
-            private string v;
-
             public Country(string v)
             {
                 this.name = v;
